@@ -1,0 +1,35 @@
+{
+  "name": "@qxiaomo/eslint-config",
+  "version": "0.0.0",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
+  "typings": "dist/es/index.d.ts",
+  "scripts": {
+    "build": "rollup -c --bundleConfigAsCjs",
+    "clean": "rm -rf dist",
+    "publish:test": "pnpm publish --dry-run",
+    "prepublish": "pnpm build"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "eslint-config",
+  "peerDependencies": {
+    "eslint": ">=8.0.0 || <=9.0.0"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^6"
+  }
+}

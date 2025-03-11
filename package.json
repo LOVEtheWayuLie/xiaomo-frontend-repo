@@ -1,0 +1,64 @@
+{
+  "name": "xiaomo-frontend-repo",
+  "version": "1.0.0",
+  "description": "前端仓库",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "husky && pnpm lerna run build --scope @qxiaomo/eslint-config",
+    "build": "pnpm lerna run build --sort",
+    "version:rc": "pnpm lerna version prerelease --preid rc",
+    "from-publish": "pnpm lerna publish from-package",
+    "clean:all": "rm -rf packages/**/dist",
+    "typecheck": "tsc --noEmit --project tsconfig.json",
+    "lint": "pnpm typecheck && lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "**/*.{less,sass,css}": "stylelint --fix",
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LOVEtheWayuLie/xiaomo-frontend-repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LOVEtheWayuLie/xiaomo-frontend-repo/issues"
+  },
+  "homepage": "https://github.com/LOVEtheWayuLie/xiaomo-frontend-repo#readme",
+  "dependencies": {
+    "@qxiaomo/eslint-config": "workspace:*"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "@types/eslint": "^8.56.12",
+    "@typescript-eslint/eslint-plugin": "^8.26.1",
+    "@typescript-eslint/parser": "^8.26.1",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-n": "^16",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-promise": "^6",
+    "husky": "^9.1.7",
+    "lerna": "^8.2.1",
+    "lint-staged": "^15.4.3",
+    "rollup": "^4.35.0",
+    "stylelint-config-standard": "^37.0.0"
+  }
+}
